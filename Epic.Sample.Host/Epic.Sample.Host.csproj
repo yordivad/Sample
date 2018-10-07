@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Site\src\components\workspace\**" />
+    <Content Remove="Site\src\components\workspace\**" />
+    <EmbeddedResource Remove="Site\src\components\workspace\**" />
+    <None Remove="Site\src\components\workspace\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="graphiql" Version="1.1.0" />
     <PackageReference Include="GraphQL" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -19,10 +26,6 @@
     <ProjectReference Include="..\Epic.Sample.Application\Epic.Sample.Application.csproj" />
     <ProjectReference Include="..\Epic.Sample.Domain\Epic.Sample.Domain.csproj" />
     <ProjectReference Include="..\Epic.Sample.Infraestructure\Epic.Sample.Infraestructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Site\src\components\workspace" />
   </ItemGroup>
 
 </Project>
