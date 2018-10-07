@@ -13,10 +13,10 @@ S /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-css/lib/
 B /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-css/lib/ocaml
 S /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-axios/lib/ocaml
 B /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-axios/lib/ocaml
+S /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/@glennsl/bs-json/lib/ocaml
+B /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/@glennsl/bs-json/lib/ocaml
 S src
 B lib/bs/src
 S src/components
 B lib/bs/src/components
-S src/pages
-B lib/bs/src/pages
 ####BSB GENERATED: NO EDIT}

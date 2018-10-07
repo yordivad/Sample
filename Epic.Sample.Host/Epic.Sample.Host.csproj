@@ -28,4 +28,12 @@
     <ProjectReference Include="..\Epic.Sample.Infraestructure\Epic.Sample.Infraestructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\build\asset-manifest.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\build\index.html" />
+    <_ContentIncludedByDefault Remove="wwwroot\build\service-worker.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\build\static\js\main.644e007e.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\build\static\js\main.644e007e.js.map" />
+  </ItemGroup>
+
 </Project>
