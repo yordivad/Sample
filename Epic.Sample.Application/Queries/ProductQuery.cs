@@ -16,6 +16,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Diagnostics;
+
 namespace Epic.Sample.Application.Queries
 {
     using System;
@@ -61,6 +63,14 @@ namespace Epic.Sample.Application.Queries
                 "get products with top",
                 arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "first" }),
                 resolve: c => this.GetAll(c.GetArgument<int>("first")));
+            
+            this.Field<ListGraphType<ProductType>>(
+                "top_order_products",
+                arguments: new QueryArguments(
+                    new QueryArgument<IntGraphType> { Name = "first" }, 
+                    new QueryArgument<StringGraphType> { Name = "orderBy"} 
+                 ),
+                resolve: c => this.GetAll(c.GetArgument<int>("first"),c.GetArgument<string>("orderBy")));
 
             this.Field<ListGraphType<ProductType>>(
                 "all_products",
@@ -88,5 +98,24 @@ namespace Epic.Sample.Application.Queries
         /// <param name="first">The first.</param>
         /// <returns>IEnumerable ProductUpdate .</returns>
         private IEnumerable<Product> GetAll(int first) => this.repository.FindAll().Take(first);
+
+
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <param name="first">The first.</param>
+        /// <returns>IEnumerable ProductUpdate .</returns>
+        private IEnumerable<Product> GetAll(int first, string order)
+        {
+            switch (order)
+            {
+                case "name" : return this.repository.FindAll().OrderBy(c => c.Name).Take(first);
+                case "price" : return this.repository.FindAll().OrderBy(c => c.Price).Take(first);
+                case "quantity" : return this.repository.FindAll().OrderBy(c => c.Quantity).Take(first);
+            }
+            
+            return null;
+        } 
+        
     }
 }

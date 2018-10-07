@@ -1,4 +1,7 @@
-type state = {products: option(array(ProductItem.product))};
+type state = {
+  orderBy: string,
+  products: option(array(ProductItem.product)),
+};
 
 type actions =
   | UpdateProducts(array(ProductItem.product));
@@ -20,10 +23,28 @@ let fetchProducts = () =>
     |> then_(r => resolve(jsonToProducts(r##data##data##top_products)))
   );
 
+let fetchOrderProducts = order =>
+  Js.Promise.(
+    Axios.get(
+      "http://localhost:5000/api/product/query?Query=query{top_order_products(first:5,orderBy:\""
+      ++ order
+      ++ "\"){name,quantity,price}}",
+    )
+    |> then_(r => resolve(jsonToProducts(r##data##data##top_order_products)))
+  );
+
+let sortBy = (orderBy, {ReasonReact.state, ReasonReact.send}) =>
+  fetchOrderProducts(orderBy)
+  |> Js.Promise.then_(r => {
+       send(UpdateProducts(r));
+       Js.Promise.resolve();
+     })
+  |> ignore;
+
 let make = _children => {
   ...component,
 
-  initialState: () => {products: None},
+  initialState: () => {products: None, orderBy: ""},
 
   didMount: self =>
     fetchProducts()
@@ -33,9 +54,9 @@ let make = _children => {
        })
     |> ignore,
 
-  reducer: (action, _state) =>
+  reducer: (action, state) =>
     switch (action) {
-    | UpdateProducts(value) => ReasonReact.Update({products: Some(value)})
+    | UpdateProducts(value) => ReasonReact.Update({...state, products: Some(value)})
     },
 
   render: self => {
@@ -46,12 +67,14 @@ let make = _children => {
       | None => ReasonReact.string("not loaded topics")
       };
     <table>
-      <tr>
-        <th> {ReasonReact.string("Product")} </th>
-        <th> {ReasonReact.string("Quantity")} </th>
-        <th> {ReasonReact.string("Price")} </th>
-      </tr>
-      renderProducts
+      <thead>
+        <tr>
+          <th onClick={_ => sortBy("name", self)}> {ReasonReact.string("Product")} </th>
+          <th onClick={_ => sortBy("quantity", self)}> {ReasonReact.string("Quantity")} </th>
+          <th onClick={_ => sortBy("price", self)}> {ReasonReact.string("Price")} </th>
+        </tr>
+      </thead>
+      <tbody> renderProducts </tbody>
     </table>;
   },
 };
