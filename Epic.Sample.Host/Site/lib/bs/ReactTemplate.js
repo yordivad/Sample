@@ -4,14 +4,11 @@
 
 var Index = 0;
 
-var Router = 0;
+var ProductItem = 0;
 
-var Products = 0;
-
-var Home = 0;
+var ProductList = 0;
 
 exports.Index = Index;
-exports.Router = Router;
-exports.Products = Products;
-exports.Home = Home;
+exports.ProductItem = ProductItem;
+exports.ProductList = ProductList;
 /* No side effect */

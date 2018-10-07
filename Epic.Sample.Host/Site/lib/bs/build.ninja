@@ -5,14 +5,14 @@ bsdep = /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-pl
 warnings = -w -30-40+6+7+27+32..39+44+45+101
 bsc_flags = -bs-suffix -nostdlib -I '/home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-platform/lib/ocaml' -bs-super-errors -color always
 ppx_flags = 
-bs_package_includes = -I /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/reason-react/lib/ocaml -I /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-css/lib/ocaml -I /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-axios/lib/ocaml
+bs_package_includes = -I /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/reason-react/lib/ocaml -I /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-css/lib/ocaml -I /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-axios/lib/ocaml -I /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/@glennsl/bs-json/lib/ocaml
 bs_package_dev_includes = 
 namespace = -ns ReactTemplate
 bsb_dir_group = 0
 refmt = /home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-platform/lib/refmt.exe
 reason_react_jsx = -ppx '/home/roy/workspace/epic/Sample/Epic.Sample.Host/Site/node_modules/bs-platform/lib/reactjs_jsx_ppx_2.exe'
 refmt_flags = --print binary
-bsc_lib_includes = -I . -I src/pages -I src/components -I src
+bsc_lib_includes = -I . -I src/components -I src
 rule build_ast_and_module_sets_from_re
   command = ${bsc} -pp "${refmt} ${refmt_flags}" ${reason_react_jsx}  ${ppx_flags} ${warnings} ${bsc_flags} -c -o ${out} -bs-syntax-only -bs-binary-ast -impl ${in}
   description = [34mBuilding[39m [2m${out}[22m
@@ -28,23 +28,18 @@ rule build_cmj_cmi
 build src/index-ReactTemplate.cmj |  $src_root_dir/lib/js/src/index.bs.js src/index-ReactTemplate.cmi : build_cmj_cmi src/index.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
-build src/components/Router.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/components/Router.re
-build src/components/Router.mlast.d : build_deps src/components/Router.mlast
-build src/components/Router-ReactTemplate.cmj |  $src_root_dir/lib/js/src/components/Router.bs.js src/components/Router-ReactTemplate.cmi : build_cmj_cmi src/components/Router.mlast
+build src/components/ProductItem.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/components/ProductItem.re
+build src/components/ProductItem.mlast.d : build_deps src/components/ProductItem.mlast
+build src/components/ProductItem-ReactTemplate.cmj |  $src_root_dir/lib/js/src/components/ProductItem.bs.js src/components/ProductItem-ReactTemplate.cmi : build_cmj_cmi src/components/ProductItem.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/components
-build src/components/Products.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/components/Products.re
-build src/components/Products.mlast.d : build_deps src/components/Products.mlast
-build src/components/Products-ReactTemplate.cmj |  $src_root_dir/lib/js/src/components/Products.bs.js src/components/Products-ReactTemplate.cmi : build_cmj_cmi src/components/Products.mlast
+build src/components/ProductList.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/components/ProductList.re
+build src/components/ProductList.mlast.d : build_deps src/components/ProductList.mlast
+build src/components/ProductList-ReactTemplate.cmj |  $src_root_dir/lib/js/src/components/ProductList.bs.js src/components/ProductList-ReactTemplate.cmi : build_cmj_cmi src/components/ProductList.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/components
-build src/pages/Home.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/Home.re
-build src/pages/Home.mlast.d : build_deps src/pages/Home.mlast
-build src/pages/Home-ReactTemplate.cmj |  $src_root_dir/lib/js/src/pages/Home.bs.js src/pages/Home-ReactTemplate.cmi : build_cmj_cmi src/pages/Home.mlast
-  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
-  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
 rule build_package
   command = ${bsc} -w -49 -no-alias-deps -c ${in}
   description = [34mBuilding[39m [2m${out}[22m
 build ReactTemplate.cmi : build_package ReactTemplate.mlmap
-build build.ninja : phony  ||  ReactTemplate.cmi src/pages/Home.mlast.d src/components/Products.mlast.d src/components/Router.mlast.d src/index.mlast.d
+build build.ninja : phony  ||  ReactTemplate.cmi src/components/ProductList.mlast.d src/components/ProductItem.mlast.d src/index.mlast.d

@@ -1,1 +1,1 @@
-src/index-ReactTemplate.cmj : src/components/Router-ReactTemplate.cmj
+src/index-ReactTemplate.cmj : src/components/ProductList-ReactTemplate.cmj

@@ -3,8 +3,8 @@
 
 var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
+var React = require("react");
 var ReasonReact = require("reason-react/lib/js/src/ReasonReact.js");
-var Home$ReactTemplate = require("../pages/Home.bs.js");
 
 var component = ReasonReact.reducerComponent("router");
 
@@ -32,7 +32,7 @@ function make() {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function () {
-              return ReasonReact.element(undefined, undefined, Home$ReactTemplate.make(/* array */[]));
+              return React.createElement("div", undefined);
             }),
           /* initialState */(function () {
               return /* record */[/* location */""];

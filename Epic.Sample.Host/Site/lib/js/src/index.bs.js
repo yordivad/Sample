@@ -3,9 +3,9 @@
 
 var ReactDOMRe = require("reason-react/lib/js/src/ReactDOMRe.js");
 var ReasonReact = require("reason-react/lib/js/src/ReasonReact.js");
-var Router$ReactTemplate = require("./components/Router.bs.js");
+var ProductList$ReactTemplate = require("./components/ProductList.bs.js");
 
-var component = ReasonReact.statelessComponent("Stadistic");
+var component = ReasonReact.statelessComponent("sample");
 
 function make() {
   return /* record */[
@@ -19,7 +19,7 @@ function make() {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function () {
-              return ReasonReact.element(undefined, undefined, Router$ReactTemplate.make(/* array */[]));
+              return ReasonReact.element(undefined, undefined, ProductList$ReactTemplate.make(/* array */[]));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
