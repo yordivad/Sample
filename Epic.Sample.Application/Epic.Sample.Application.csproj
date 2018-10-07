@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>C:\Epic\Epic.Sample.Application\Epic.Sample.Application.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Behavior" />
+      <Folder Include="Validations" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="GraphQL" Version="2.1.0" />
+      <PackageReference Include="MediatR" Version="5.1.0" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="5.1.0" />
+      <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Epic.Sample.Domain\Epic.Sample.Domain.csproj" />
+      <ProjectReference Include="..\Epic.Sample.Infraestructure\Epic.Sample.Infraestructure.csproj" />
+    </ItemGroup>
+
+</Project>

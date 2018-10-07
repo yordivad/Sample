@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="wwwroot\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="GraphiQL" Version="1.2.0-beta-2" />
+        <PackageReference Include="GraphQL" Version="2.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+        <PackageReference Include=" " Version="3.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="3.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Epic.Sample.Application\Epic.Sample.Application.csproj" />
+      <ProjectReference Include="..\Epic.Sample.Domain\Epic.Sample.Domain.csproj" />
+      <ProjectReference Include="..\Epic.Sample.Infraestructure\Epic.Sample.Infraestructure.csproj" />
+    </ItemGroup>
+
+</Project>

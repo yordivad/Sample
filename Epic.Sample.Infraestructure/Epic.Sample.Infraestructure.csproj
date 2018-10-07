@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <AssemblyName>Epic.Sample.Infrastructure</AssemblyName>
+        <RootNamespace>Epic.Sample.Infrastructure</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>C:\Epic\Epic.Sample.Infraestructure\Epic.Sample.Infrastructure.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Epic.Sample.Domain\Epic.Sample.Domain.csproj" />
+      
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="LiteDB" Version="4.1.4" />
+    </ItemGroup>
+
+</Project>
