@@ -19,14 +19,14 @@ let jsonToProducts = json => Json.Decode.array(jsonToProduct, json);
 
 let fetchProducts = () =>
   Js.Promise.(
-    Axios.get("http://localhost:5000/api/product/query?Query=query{top_products(first:5){name,quantity,price}}")
+    Axios.get("/api/product/query?Query=query{top_products(first:5){name,quantity,price}}")
     |> then_(r => resolve(jsonToProducts(r##data##data##top_products)))
   );
 
 let fetchOrderProducts = order =>
   Js.Promise.(
     Axios.get(
-      "http://localhost:5000/api/product/query?Query=query{top_order_products(first:5,orderBy:\""
+      "/api/product/query?Query=query{top_order_products(first:5,orderBy:\""
       ++ order
       ++ "\"){name,quantity,price}}",
     )

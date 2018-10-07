@@ -36,4 +36,10 @@
     <_ContentIncludedByDefault Remove="wwwroot\build\static\js\main.644e007e.js.map" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwroot\asset-manifest.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

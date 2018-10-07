@@ -1,1 +1,0 @@
-src/components/ProductList-ReactTemplate.cmj : src/components/ProductItem-ReactTemplate.cmj
