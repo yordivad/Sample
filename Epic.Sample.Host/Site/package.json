@@ -4,12 +4,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "mv build ../wwwroot",
     "test": "react-scripts test --env=jsdom",
     "eject": "react -scripts eject",
     "clean": "bsb -clean-world",
-    "toolbox": "react-toolbox-themr",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "keywords": [
