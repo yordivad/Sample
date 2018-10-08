@@ -14,7 +14,7 @@ let componet = ReasonReact.statelessComponent("product");
 let make = (~item: product, _children) => {
   ...componet,
   render: _self => {
-    let color = item.price > 3.0 ? highPrice : normalPrice;
+    let color = item.quantity > 3.0 ? highPrice : normalPrice;
 
     <tr className=color>
       <td> {ReasonReact.string(item.name)} </td>
