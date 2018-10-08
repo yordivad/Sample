@@ -26,9 +26,7 @@ let fetchProducts = () =>
 let fetchOrderProducts = order =>
   Js.Promise.(
     Axios.get(
-      "/api/product/query?Query=query{top_order_products(first:5,orderBy:\""
-      ++ order
-      ++ "\"){name,quantity,price}}",
+      "/api/product/query?Query=query{top_order_products(first:5,orderBy:\"" ++ order ++ "\"){name,quantity,price}}",
     )
     |> then_(r => resolve(jsonToProducts(r##data##data##top_order_products)))
   );
@@ -66,15 +64,18 @@ let make = _children => {
         ReasonReact.array(Array.map((p: ProductItem.product) => <ProductItem key={p.name} item=p />, products))
       | None => ReasonReact.string("not loaded topics")
       };
-    <table>
-      <thead>
-        <tr>
-          <th onClick={_ => sortBy("name", self)}> {ReasonReact.string("Product")} </th>
-          <th onClick={_ => sortBy("quantity", self)}> {ReasonReact.string("Quantity")} </th>
-          <th onClick={_ => sortBy("price", self)}> {ReasonReact.string("Price")} </th>
-        </tr>
-      </thead>
-      <tbody> renderProducts </tbody>
-    </table>;
+    <div>
+      <h3> {ReasonReact.string("Products")} </h3>
+      <table>
+        <thead>
+          <tr>
+            <th onClick={_ => sortBy("name", self)}> {ReasonReact.string("Product")} </th>
+            <th onClick={_ => sortBy("quantity", self)}> {ReasonReact.string("Quantity")} </th>
+            <th onClick={_ => sortBy("price", self)}> {ReasonReact.string("Price")} </th>
+          </tr>
+        </thead>
+        <tbody> renderProducts </tbody>
+      </table>
+    </div>;
   },
 };

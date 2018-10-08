@@ -182,6 +182,13 @@
             <param name="first">The first.</param>
             <returns>IEnumerable ProductUpdate .</returns>
         </member>
+        <member name="M:Epic.Sample.Application.Queries.ProductQuery.GetAll(System.Int32,System.String)">
+            <summary>
+            Gets all.
+            </summary>
+            <param name="first">The first.</param>
+            <returns>IEnumerable ProductUpdate .</returns>
+        </member>
         <member name="T:Epic.Sample.Application.Handlers.DeleteProductHandler">
             <summary>
             Class DeleteProductHandler.
